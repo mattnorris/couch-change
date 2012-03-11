@@ -1,0 +1,24 @@
+*~
+tmp*
+*.tmp
+*.bak
+*.pyc
+
+# Build artifacts
+
+nosetests.xml
+coverage.xml
+.coverage
+*.cover
+.figleaf
+report.html
+pyccuracy_report.html
+
+# Sass artifacts
+
+.sass-cache/
+
+# System artifacts
+
+PIL.pth
+
