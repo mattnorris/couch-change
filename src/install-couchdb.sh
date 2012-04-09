@@ -67,12 +67,13 @@ function installPackages() {
     git submodule init
     git submodule update
     
-    # TODO: For some reason, rake was jumping the gun and trying to run 
-    # before git finished. Fix this. (Note: rake takes FOREVER to complete.)
-#    rake 
+    # Wait for the update to finish before building. 
+    # http://stackoverflow.com/questions/356100
+    wait
+    rake 
 
-    echo "You're almost done!"
-    echo "cd into '$DST_DIR/build-couchdb' and run 'rake' now. NOTE: This will take awhile."
+    echo "Done!"
+    echo "cd into '$DST_DIR/build-couchdb/build/bin' and run 'couchdb' to relax and start using CouchDB."
     
     # TODO: Maybe install couchapp too. 
     # http://guide.couchdb.org/draft/managing.html#installing
