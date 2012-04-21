@@ -42,16 +42,16 @@ function outputUsage() {
     echo "Options:"
     echo "  -h/--help     Prints this message"
     echo "  -s/--string   Specifies the string to search for within the"
-         "                database name. By default, it's searches for a prefix."
+    echo "                database name. By default, it's searches for a prefix."
     echo "  -S/--suffix   Search for a suffix instead of a prefix"
-    echo "  -u/--user     Specifies the username and password" 
+    echo "  -u/--user     Specifies CouchDB username and password" 
     echo "                Expects this format: -u username password"
     
     exit 1
 }
 
 ################################################################################
-# Installation functions 
+# Core functions 
 ################################################################################
 
 # Echos a CouchDB instance string similar to this: 
@@ -70,7 +70,8 @@ function echoCouchDB() {
 function removeDatabases() {
 
     # Get the list of databases. 
-    DBS=`curl -s GET http://127.0.0.1:5984/_all_dbs`
+    COUCHDB=`echoCouchDB`
+    DBS=`curl -s GET $COUCHDB/_all_dbs`
     # Strip the brackets. 
     DBS=${DBS:1:`expr ${#DBS}-2`}
     # Strip the quotes. 
@@ -106,8 +107,14 @@ function removeDatabases() {
     # Create a new array. 
     DBS=$(echo $DEL_DBS | tr "," "\n")
     
-    echo -e "$DB_COUNT databases were found meeting this criteria.\n"
+    echo -e "$DB_COUNT databases were found meeting this criteria."
     
+    # If there are no databases to delete, exit gracefully. 
+    if [ $DB_COUNT -eq 0 ]; then
+        exit 0
+    fi
+    
+    # Otherwise, list them out and warn the user. 
     for db in $DBS
     do
         echo $db
@@ -135,9 +142,6 @@ function removeDatabases() {
     fi
     
     exit 0
-    
-    # curl -X DELETE http://matthew:matth3w@localhost:5984/albums-replica
-    # {"ok":true}
 }
 
 ################################################################################
