@@ -4,6 +4,10 @@ tmp*
 *.bak
 *.pyc
 
+# Markdown artifacts
+
+*.md.html
+
 # Build artifacts
 
 nosetests.xml
