@@ -1,7 +1,8 @@
 #!/bin/bash
-# Title:        create-couch-users.sh
-# Description:  Creates the given list of users in CouchDB
-# Author:       matthew
+# Title:        manage-couch-users.sh
+# Description:  Creates or deletes the given list of users in CouchDB. 
+#               Creates by default.
+# Author:       Matthew Norris
 # Reference:    http://tldp.org/LDP/abs/html/string-manipulation.html
 #               http://tldp.org/LDP/abs/html/arrays.html
 #               http://comments.gmane.org/gmane.comp.db.couchdb.user/8950
@@ -39,11 +40,13 @@ function warningMessage() {
 # Prints this script's usage and exists. 
 function outputUsage() {
     echo "Usage: `basename $0` USER_LIST [options...]"
+    echo -e "\nCreates (default) or deletes the given list of users in CouchDB\n"
     echo "Options:"
     echo "  -h/--help    Prints this message"
-    echo "  -f/--file    File containing a list of usernames"
+    #echo "  -f/--file    File containing a list of usernames"
     echo "  -u/--user    Specifies CouchDB username and password" 
     echo "               Expects this format: -u username password"
+    echo "  -r/--remove  Removes the list of usernames instead"
     
     exit 1
 }
