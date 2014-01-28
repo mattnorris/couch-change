@@ -3,8 +3,9 @@
 > 1. the loose change found in the nooks and crannies of your couch
 > 2. a helpful set of scripts and utilities for working with CouchDB and CouchApps
 
-## Why use Couch Change?
-[CouchDB](http://couchdb.apache.org) is incredibly useful, but it lacks certain "bulk" commands that are helpful during development. This project aims to fill some of those gaps by allowing you to: 
+![Couch Change](https://googledrive.com/host/0B2GEUe-OZRECV3BpNm1fam4tNk0/couch-change-banner.jpg "Couch Change")
+
+[CouchDB](http://couchdb.apache.org) is incredibly useful, but it lacks certain "bulk" commands that are helpful during development. This project aims to fill some of those gaps.
 
 - Install and remove CouchDB easily on Linux
 - Create and delete whole lists of users _at once with one command_
